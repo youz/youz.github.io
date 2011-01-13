@@ -21,7 +21,7 @@ input.ctl { width: 270px }
 }
 </style>
 <title>UserFilter for canvas DEMO</title>
-<script type="text/javascript" src="uf.js"></script>
+<script type="text/javascript" src="https://github.com/youz/ufjs/raw/master/uf.js"></script>
 </head>
 <body>
 <div id="header">
@@ -154,11 +154,11 @@ var UFJS_DEMO = function () {
 
   $('apply').onclick = function () {
     UF.reset_timer();
-    if (render()) save_to_hash();
+    if (render(true)) save_to_hash();
   };
   $('start').onclick = function () {
     UF.reset_timer();
-    if (render()) {
+    if (render(true)) {
       save_to_hash();
       location.hash += ":1";
       UF.start(canvas);
