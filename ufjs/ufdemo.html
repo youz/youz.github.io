@@ -3,34 +3,44 @@
 <head>
 <meta charset="utf-8">
 <style>
-body { width: 100% }
-#header, #footer { width: 100%; }
-#image, #controler { float: left; }
+body,#bg {
+  padding: 0;
+  margin: 0;
+}
+#content {
+  margin: 10px 10px;
+  padding: 10px 30px;
+  position: absolute;
+  z-index: 1;
+  background-color: rgba(255,255,255,0.7);
+}
+#image, #controler {
+  float: left;
+  padding: 5px 5px;
+}
 #formula { clear: both; } 
-canvas { border: solid 2px #000; }
+#canvas { border: solid 2px #888; }
 textarea {
   vertical-align: middle;
   font-family: "Courier";
   font-size: 14px;
+  background-color: rgba(255,255,255,0.9);
 }
 input.ctl { width: 270px }
 .caution { 
   color: red;
   font-family: "Courier";
   font-size: 14px;
+  background-color: rgba(255,255,255,0.8);
 }
 </style>
 <title>UserFilter for canvas DEMO</title>
 <script type="text/javascript" src="https://github.com/youz/ufjs/raw/master/uf.js"></script>
 </head>
 <body>
-<div id="header">
+<div id="content">
 <h2>UserFilter for canvas DEMO</h1>
-</div>
 <div id="image">
-image:<br>
-<br>
-<canvas id="canvas" width="256" height="256"></canvas><br>
 file:
 <select id="file">
 <option value="kodim01s.jpg">kodim01</option>
@@ -41,6 +51,8 @@ file:
 <option value="256" selected>blank: 256x256</option>
 <option value="512">blank: 512x512</option>
 </select>
+<br>
+<canvas id="canvas" width="256" height="256"></canvas><br>
 </div>
 <div id="controler">
 controler:
@@ -56,20 +68,21 @@ controler:
 </ol>
 </div>
 <div id="formula">
-<br>
 formula:<br>
-R<textarea id="f0" cols="80" rows="3">r</textarea><span id="e0" class="caution"></span><br>
-G<textarea id="f1" cols="80" rows="3">g</textarea><span id="e1" class="caution"></span><br>
-B<textarea id="f2" cols="80" rows="3">b</textarea><span id="e2" class="caution"></span><br>
-A<textarea id="f3" cols="80" rows="3">A</textarea><span id="e3" class="caution"></span><br>
+R<textarea id="f0" cols="80" rows="2">r</textarea><span id="e0" class="caution"></span><br>
+G<textarea id="f1" cols="80" rows="2">g</textarea><span id="e1" class="caution"></span><br>
+B<textarea id="f2" cols="80" rows="2">b</textarea><span id="e2" class="caution"></span><br>
+A<textarea id="f3" cols="80" rows="2">A</textarea><span id="e3" class="caution"></span><br>
 <br>
-<button id="apply">apply</button> <button id="start">start</button> <button id="stop">stop</button><br>
-<button id="popup">to PNG</button>
+<button id="apply">apply</button> <button id="start">start</button> <button id="stop">stop</button> <button id="popup">to PNG</button> <button id="setbg">set to background</button>
 </div>
 <ul type="square">
-<li>source code: <a href="https://github.com/youz/ufjs/">https://github.com/youz/ufjs</a>
+<li>source: <a href="https://github.com/youz/ufjs/"> github.com/youz/ufjs </a>
 <li>reference: <a href="http://gimpuserfilter.sourceforge.net/">UserFilter Plug-in for The Gimp</a>
 </ul>
+</div>
+<canvas id="bg"></canvas>
+</body>
 <script type="text/javascript">
 var UFJS_DEMO = function () {
   var $ = function () {
@@ -154,8 +167,9 @@ var UFJS_DEMO = function () {
 
   $('apply').onclick = function () {
     UF.reset_timer();
-    if (render(true)) save_to_hash();
+    if (render()) save_to_hash();
   };
+
   $('start').onclick = function () {
     UF.reset_timer();
     if (render(true)) {
@@ -164,13 +178,36 @@ var UFJS_DEMO = function () {
       UF.start(canvas);
     }
   };
+
   $('stop').onclick = function () {
     save_to_hash();
     UF.stop();
   };
+
   $('popup').onclick = function () {
     var url = canvas.toDataURL();
     window.open(url);
+  };
+
+  $('setbg').onclick = function () {
+    var cw = canvas.width;
+    var ch = canvas.height;
+    var bg = $('bg');
+    /*
+    var w = bg.width = window.innerWidth;
+    var h = bg.height = window.innerHeight;
+     */
+    // for firefox
+    var w = bg.width = Math.ceil(window.innerWidth/cw) * cw;
+    var h = bg.height = Math.ceil(window.innerHeight/ch) * ch;
+
+    var pattern = canvas.getContext('2d').getImageData(0, 0, cw, ch);
+    var bgctx = bg.getContext('2d');
+    for (var y=0; y < h; y+=ch) {
+      for (var x=0; x < w; x+=cw) {
+        bgctx.putImageData(pattern, x, y);
+      }
+    }
   };
 
   // image selector
