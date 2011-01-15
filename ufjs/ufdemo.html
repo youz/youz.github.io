@@ -82,7 +82,6 @@ A<textarea id="f3" cols="80" rows="2">A</textarea><span id="e3" class="caution">
 <li>reference: <a href="http://gimpuserfilter.sourceforge.net/">UserFilter Plug-in for The Gimp</a>
 </ul>
 </div>
-<canvas id="bg"></canvas>
 </body>
 <script type="text/javascript">
 var UFJS_DEMO = function () {
@@ -191,24 +190,7 @@ var UFJS_DEMO = function () {
   };
 
   $('setbg').onclick = function () {
-    var cw = canvas.width;
-    var ch = canvas.height;
-    var bg = $('bg');
-    /*
-    var w = bg.width = window.innerWidth;
-    var h = bg.height = window.innerHeight;
-     */
-    // for firefox
-    var w = bg.width = Math.ceil(window.innerWidth/cw) * cw;
-    var h = bg.height = Math.ceil(window.innerHeight/ch) * ch;
-
-    var pattern = canvas.getContext('2d').getImageData(0, 0, cw, ch);
-    var bgctx = bg.getContext('2d');
-    for (var y=0; y < h; y+=ch) {
-      for (var x=0; x < w; x+=cw) {
-        bgctx.putImageData(pattern, x, y);
-      }
-    }
+    document.body.background = canvas.toDataURL();
   };
 
   // image selector
