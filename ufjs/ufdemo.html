@@ -144,12 +144,22 @@ var UFJS_DEMO = function () {
       var data = location.hash.substr(1).split(/:/);
       if (data.length < 13) return;
       for (var i=0; i<8; ++i) $('c'+i).value = $('m'+i).value = data[i];
-      for (i=0; i<4; ++i) $('f'+i).value = decodeURIComponent(data[8+i]);
+      var ok = true;
+      for (i=0; i<4; ++i) {
+        var formula = $('f'+i).value = unescape(data[8+i]);
+        var chk = UF.check(formula);
+        if (chk != 'ok') {
+          ok = false;
+          $('e'+i).innerHTML = chk;
+        }
+      }
       $('file').selectedIndex = data[12] * 1;
       load_image($('file').value,
                  function () {
-                   render();
-                   if (data[13]) UF.start(canvas);
+                   if (ok) {
+                     render();
+                     if (data[13]) UF.start(canvas);
+                   }
                  });
     }
   }
@@ -157,7 +167,7 @@ var UFJS_DEMO = function () {
   function save_to_hash() {
     var forms = ["c0","c1","c2","c3","c4","c5","c6","c7","f0","f1","f2","f3"];
     var params ='';
-    for (var i in forms) params += encodeURIComponent($(forms[i]).value)+":";
+    for (var i in forms) params += escape($(forms[i]).value)+":";
     params += $('file').selectedIndex;
     location.hash = params;
   }
@@ -167,7 +177,7 @@ var UFJS_DEMO = function () {
 
   $('apply').onclick = function () {
     UF.reset_timer();
-    if (render()) save_to_hash();
+    if (render(true)) save_to_hash();
   };
 
   $('start').onclick = function () {
