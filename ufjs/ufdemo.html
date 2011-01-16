@@ -36,11 +36,12 @@ input.ctl { width: 270px }
 }
 </style>
 <title>UserFilter for canvas DEMO</title>
-<script type="text/javascript" src="https://github.com/youz/ufjs/raw/master/uf.js"></script>
 </head>
 <body>
 <div id="content">
-<div id="header"><h2>UserFilter for canvas DEMO</h1></div>
+<div id="header">
+<h2>UserFilter for canvas DEMO</h2>
+</div>
 <div id="image">
 file:
 <select id="file">
@@ -77,26 +78,21 @@ A<textarea id="f3" cols="80" rows="2">A</textarea><span id="e3" class="caution">
 <br>
 <button id="apply">apply</button> <button id="start">start</button> <button id="stop">stop</button> <button id="popup">to PNG</button> <button id="setbg">set to background</button>
 </div>
-<ul type="square">
-<li>source: <a href="https://github.com/youz/ufjs/"> github.com/youz/ufjs </a>
-<li>reference: <a href="http://gimpuserfilter.sourceforge.net/">UserFilter Plug-in for The Gimp</a>
+<ul>
+<li>source: <a href="https://github.com/youz/ufjs/"> github.com/youz/ufjs </a></li>
+<li>reference: <a href="http://gimpuserfilter.sourceforge.net/">UserFilter Plug-in for The Gimp</a></li>
 </ul>
 </div>
-</body>
+<script type="text/javascript" src="https://github.com/youz/ufjs/raw/master/uf.js"></script>
 <script type="text/javascript">
 var UFJS_DEMO = function () {
+
+  var canvas, ctx, UF;
+  var images = {};
+
   var $ = function () {
     return document.getElementById.apply(document, arguments);
   };
-
-  var canvas = $('canvas');
-  var ctx = canvas.getContext('2d');
-  var UF = new UserFilter();
-
-  /* test
-  UF.addFunction('triple', function (n) { return n * n * n; });
-  UF.addFunction('nx', (function (n) { return X - n; }).toString());
-   */
 
   function render (reset) {
     UF.setFormula($('f0').value, $('f1').value, $('f2').value, $('f3').value);
@@ -107,7 +103,6 @@ var UFJS_DEMO = function () {
     return UF.apply(canvas);
   }
 
-  var images = {};
   function load_image(file, cb) {
     if (!isNaN(file)) {
       var size = file * 1;
@@ -172,67 +167,76 @@ var UFJS_DEMO = function () {
     location.hash = params;
   }
 
-  // setup handlers
-  window.onload = load_from_hash;
+  function init () {
+    canvas = $('canvas');
+    ctx = canvas.getContext('2d');
+    UF = new UserFilter();
 
-  $('apply').onclick = function () {
-    UF.reset_timer();
-    if (render(true)) save_to_hash();
-  };
+    $('apply').onclick = function () {
+      UF.reset_timer();
+      if (render(true)) save_to_hash();
+    };
 
-  $('start').onclick = function () {
-    UF.reset_timer();
-    if (render(true)) {
-      save_to_hash();
-      location.hash += ":1";
-      UF.start(canvas);
-    }
-  };
-
-  $('stop').onclick = function () {
-    save_to_hash();
-    UF.stop();
-  };
-
-  $('popup').onclick = function () {
-    var url = canvas.toDataURL();
-    window.open(url);
-  };
-
-  $('setbg').onclick = function () {
-    document.body.background = canvas.toDataURL();
-  };
-
-  // image selector
-  $('file').onchange = function () {
-    load_image(this.value, save_to_hash);
-  };
-
-  for (var i=0; i<8; ++i) {
-    // slider
-    $('c'+i).onchange = function () {
-      $('m'+this.id.substr(1)).value = this.value;
-      if ([$('f0').value,$('f1').value, $('f2').value, $('f3').value].join('').match(/ctl|val|map/)) {
-        render(true);
+    $('start').onclick = function () {
+      UF.reset_timer();
+      if (render(true)) {
+        save_to_hash();
+        location.hash += ":1";
+        UF.start(canvas);
       }
     };
 
-    // monitor
-    $('m'+i).onchange = function () {
-      var slider = $('c'+this.id.substr(1));
-      slider.value = isNaN(this.value) ? 0 : Math.min(Math.max(Math.round(this.value), 0), 255);
-      slider.onchange();
+    $('stop').onclick = function () {
+      save_to_hash();
+      UF.stop();
     };
+
+    $('popup').onclick = function () {
+      var url = canvas.toDataURL();
+      window.open(url);
+    };
+
+    $('setbg').onclick = function () {
+      document.body.background = canvas.toDataURL();
+    };
+
+    // image selector
+    $('file').onchange = function () {
+      load_image(this.value, save_to_hash);
+    };
+
+    for (var i=0; i<8; ++i) {
+      // slider
+      $('c'+i).onchange = function () {
+        $('m'+this.id.substr(1)).value = this.value;
+        if ([$('f0').value,$('f1').value, $('f2').value, $('f3').value].join('').match(/ctl|val|map/)) {
+          render(true);
+        }
+      };
+
+      // monitor
+      $('m'+i).onchange = function () {
+        var slider = $('c'+this.id.substr(1));
+        slider.value = isNaN(this.value) ? 0 : Math.min(Math.max(Math.round(this.value), 0), 255);
+        slider.onchange();
+      };
+    }
+
+    // formula
+    for (i=0; i<4; ++i) {
+      $('f'+i).onchange = function () {
+        var chk = UF.check(this.value);
+        $('e'+this.id.substr(1)).innerHTML = (chk == 'ok')?'':chk;
+      };
+    }
+
+    load_from_hash();
   }
 
-  // formula
-  for (i=0; i<4; ++i) {
-    $('f'+i).onchange = function () {
-      var chk = UF.check(this.value);
-      $('e'+this.id.substr(1)).innerHTML = (chk == 'ok')?'':chk;
-    };
-  }
-
-  return true;
+  return { init: init };
 }();
+
+window.onload = UFJS_DEMO.init;
 </script>
+</body>
+</html>
