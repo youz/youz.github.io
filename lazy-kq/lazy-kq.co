@@ -1,0 +1,58 @@
+
+function LazyK src, stdin
+  # combinator
+  S = (x)->(y)->(z)-> x(z)(y(z))
+  K = (x)->(y)-> x
+  I = -> it
+
+  # lambda calc operator
+  cons = (x)->(y)->(f)-> f(x)(y)
+  succ = (n)->(f)->(x)-> f(n(f)(x))
+  
+  # church nums
+  cnums = [(f)->(x)-> x]
+  for i from 1 to 256
+    cnums[i] = succ(cnums[i-1])
+  
+  # input -> cons
+  function input str
+    car = -> cnums[if str is "" then 256 else str.charCodeAt(0)](it)
+    cdr = -> input(str.slice(1))(it)
+    cons(car)(cdr)
+
+  # cons -> output
+  function output cns
+    buf = ""
+    out = (x)->(y)->
+      code = x(-> it + 1)(0)
+      if code < 256
+        buf := buf + String.fromCharCode(code)
+        y(out)
+    cns(out)
+    buf
+
+  # read unlambda-style code
+  function read_unlambda src
+    src .= replace(/[^\`ski]/g, "")
+    if src is "" then return -> it
+    read1 = ->
+      c = src[0]
+      src .:= slice(1)
+      switch c
+      case \` then read1()(read1())
+      case \s then S
+      case \k then K
+      case \i then I
+    read1()
+  
+  # run
+  f = read_unlambda(src)
+  output(f(input(stdin)))
+
+function LazyKQ(src, stdin)
+  src .= replace(/ﾀﾞｧ/g, \k).replace(/ｼｴﾘ/g, \s).
+         replace(/ｲｪｽ/g, \i).replace(/!/g, \`)
+  LazyK(src, stdin)
+
+@LazyK  ?= LazyK
+@LazyKQ ?= LazyKQ
