@@ -1,5 +1,5 @@
 
-function LazyK src, stdin
+function LazyK(src, stdin)
   # combinator
   S = (x)->(y)->(z)-> x(z)(y(z))
   K = (x)->(y)-> x
@@ -15,13 +15,13 @@ function LazyK src, stdin
     cnums[i] = succ(cnums[i-1])
   
   # input -> cons
-  function input str
+  function input(str)
     car = -> cnums[if str is "" then 256 else str.charCodeAt(0)](it)
     cdr = -> input(str.slice(1))(it)
     cons(car)(cdr)
 
   # cons -> output
-  function output cns
+  function output(cns)
     buf = ""
     out = (x)->(y)->
       code = x(-> it + 1)(0)
@@ -32,7 +32,7 @@ function LazyK src, stdin
     buf
 
   # read unlambda-style code
-  function read_unlambda src
+  function read_unlambda(src)
     src .= replace(/[^\`ski]/g, "")
     if src is "" then return -> it
     read1 = ->
