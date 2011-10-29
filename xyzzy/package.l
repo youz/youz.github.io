@@ -17,7 +17,7 @@ OAuth認証ヘッダの生成機能と、Webブラウザ経由でのアクセストークン取得機能を提供し
 	)
 	(	("version" . "0.5.0")
 		("file" . "xyttr0.5.0.tgz")
-		("src" . "http://dl.dropbox.com/u/215714/xyzzy/xyttr1.0.0.tgz")
+		("src" . "http://dl.dropbox.com/u/215714/xyzzy/xyttr0.5.0.tgz")
 		("md5" . "d4af776be96f38689bb125670c84f806")
 		("time" . 3528893888)
 		("name" . "xyttr")
