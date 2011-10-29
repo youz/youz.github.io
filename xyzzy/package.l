@@ -57,7 +57,7 @@ OAuth認証ヘッダの生成機能と、Webブラウザ経由でのアクセストークン取得機能を提供し
 		("description" . "Coco用のメジャーモード")
 		("changes" . "2011/10/30: 1st release")
 	)
-	(	("version" . "2011.10.30")
+	(	("version" . "1.0.0")
 		("file" . "coffee-mode1.0.0.tgz")
 		("src" . "http://dl.dropbox.com/u/215714/xyzzy/coffee-mode1.0.0.tgz")
 		("md5" . "20dc2ca7214ca64a5c7a1f1d5a41c717")
