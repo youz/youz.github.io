@@ -72,9 +72,16 @@ function LazyK(src, stdin)
       case \i then I
     read1()
   
+  # String <-> UTF8 Octets
+  function toOctets(str)
+    unescape encodeURIComponent str
+    
+  function fromOctets(str)
+    decodeURIComponent escape str
+
   # run
-  f = read_unlambda(src)
-  output(f(input(stdin)))
+  fromOctets output read_unlambda(src) input toOctets stdin
+
 
 function LazyKQ(src, stdin)
   src .= replace(/ﾀﾞｧ/g, \k).replace(/ｼｴﾘ/g, \s).
