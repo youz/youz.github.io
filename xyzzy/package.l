@@ -10,7 +10,7 @@
 		("time" . 3528893888)
 		("name" . "xl-oauth")
 		("category" "Network" "Libraries")
-		("depends" . "xml-http-request")
+		("depends" "xml-http-request")
 		("description" . "OAuth1.0 クライアントライブラリ for xyzzy
 OAuth認証ヘッダの生成機能と、Webブラウザ経由でのアクセストークン取得機能を提供します。")
 		("changes" . "2011/10/30: 1st release")
