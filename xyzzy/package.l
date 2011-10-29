@@ -39,7 +39,7 @@ OAuth認証ヘッダの生成機能と、Webブラウザ経由でのアクセストークン取得機能を提供し
 	)
 	(	("version" . "1.0.0")
 		("file" . "xl-rt1.0.0.tgz")
-		("src" . "http://dl.dropbox.com/u/215714/xyzzy/xl-rt2011.10.30.tgz")
+		("src" . "http://dl.dropbox.com/u/215714/xyzzy/xl-rt1.0.0.tgz")
 		("md5" . "2ff54dc2ce3a02833cd89123a62ee636")
 		("time" . 3528894036)
 		("name" . "xl-rt")
