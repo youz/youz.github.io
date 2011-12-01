@@ -15,17 +15,22 @@
 OAuth認証ヘッダの生成機能と、Webブラウザ経由でのアクセストークン取得機能を提供します。")
 		("changes" . "2011/10/30: 1st release")
 	)
-	(	("version" . "1.0.1")
-		("file" . "xyttr1.0.1.tgz")
-		("src" . "http://dl.dropbox.com/u/215714/xyzzy/xyttr1.0.1.tgz")
-		("md5" . "902e588583d4de9e962c34c57f890ffa")
-		("time" . 3528968773)
+	(	("version" . "1.1.1")
+		("file" . "xyttr1.1.1.tgz")
+		("src" . "http://dl.dropbox.com/u/215714/xyzzy/xyttr1.1.1.tgz")
+		("md5" . "f58ec37f70c7068f9847b01bd5438384")
+		("time" . 3531741061)
 		("name" . "xyttr")
 		("category" "Network" "Libraries")
 		("description" . "xyzzy上で動作するミニマムなtwitterクライアント")
 		("depends" "xml-http-request" "json")
-		("changes" . "2011/10/30:
-  * DM機能追加につき、HTTPS接続でAPIを使用するように変更 (検索APIはHTTPのみ)")
+		("changes" . "2011/12/01:
+* タイムラインリロード時のリクエスト処理を非同期に
+* favoriteのトグル処理を非同期に
+* expand-focused-url コマンド追加
+* 購読中リストの取得タイミング変更
+* リファレンス(site-lisp/xyttr/reference.md)追加
+* ~/.xyttr/config.l のサンプルを追加 (site-lisp/xyttr/dot_xyttr_example以下)")
 	)
 	(	("version" . "1.0.0")
 		("file" . "ldrpin-mode1.0.0.tgz")
