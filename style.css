@@ -1,0 +1,89 @@
+/* ref. http://blog.practical-scheme.net/blog.css */
+
+body {
+  font-family: "Meiryo", "Hiragino Kaku Gothic Pro", sans-serif;
+  color: black;
+  background-color: white;
+  padding: 10pt;
+}
+
+:link, :visited { text-decoration: none; color: #00e; }
+
+a:hover, a:focus, a:active { background-color: #ddf; }
+
+h1 {
+  font-size: 160%;
+  display: block;
+  color: #147;
+  border-bottom: solid thin;
+}
+
+h2 {
+  font-size: 130%;
+  text-align: left;
+  color: #055;
+  border-bottom: solid thin;
+}
+
+h3, h4, h5, h6 { 
+  font-size: 100%;
+  text-align: left;
+  color: #055;
+}
+
+hr {
+  height: 2px;
+  color: #055;
+  margin: 1em;
+}
+
+pre {
+  margin: 0.5em 2em 0.5em 2em;
+  padding: 1em;
+  font-size: 100%;
+  font-family: "Courier New", "Osaka-mono", "Bitstream Vera Sans Mono", monospace;
+  background: #eff;
+  border: solid thin #acc;
+  overflow: auto;
+}
+
+code {
+  font-size: 100%;
+  font-family: "Courier New", "Osaka-mono", "Bitstream Vera Sans Mono", monospace;
+}
+
+blockquote {
+  border-left: solid thick #dba;
+  margin: 0 1em 0.8em 2em;
+}
+
+/* google code prettify */
+.pln{color:#000}
+@media screen{
+  .str{color:#800}
+  .kwd{color:#00c}
+  .com{color:#666}
+  .typ{color:#606}
+  .lit{color:#800}
+  .pun,.opn,.clo{color:#686}
+  .tag{color:#008}
+  .atn{color:#606}
+  .atv{color:#080}
+  .dec,.var{color:#606}
+  .fun{color:red}
+}
+@media print,projection{
+  .str{color:#080}
+  .kwd{color:#00c}
+  .com{color:#666}
+  .typ{color:#606}
+  .lit{color:#800}
+  .pun,.opn,.clo{color:#686}
+  .tag{color:#008}
+  .atn{color:#606}
+  .atv{color:#080}
+  .dec,.var{color:#606}
+  .fun{color:red}
+}
+pre.prettyprint{
+}
