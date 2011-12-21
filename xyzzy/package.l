@@ -15,22 +15,19 @@
 OAuth認証ヘッダの生成機能と、Webブラウザ経由でのアクセストークン取得機能を提供します。")
 		("changes" . "2011/10/30: 1st release")
 	)
-	(	("version" . "1.1.1")
-		("file" . "xyttr1.1.1.tgz")
-		("src" . "http://dl.dropbox.com/u/215714/xyzzy/xyttr1.1.1.tgz")
-		("md5" . "f58ec37f70c7068f9847b01bd5438384")
-		("time" . 3531741061)
+	(	("version" . "1.1.2")
+		("file" . "xyttr.tgz")
+		("src" . "http://dl.dropbox.com/u/215714/xyzzy/xyttr.tgz")
+		("md5" . "cf0dcaa2e1b0e5aaad42bb32def9b73e")
+		("time" . 3533477964)
 		("name" . "xyttr")
 		("category" "Network" "Libraries")
 		("description" . "xyzzy上で動作するミニマムなtwitterクライアント")
 		("depends" "xml-http-request" "json")
-		("changes" . "2011/12/01:
-* タイムラインリロード時のリクエスト処理を非同期に
-* favoriteのトグル処理を非同期に
-* expand-focused-url コマンド追加
-* 購読中リストの取得タイミング変更
-* リファレンス(site-lisp/xyttr/reference.md)追加
-* ~/.xyttr/config.l のサンプルを追加 (site-lisp/xyttr/dot_xyttr_example以下)")
+		("changes" . "2011/12/21:
+* タイムラインバッファリロード時に実行するフック *timeline-reload-hook* を追加
+* xyttr-listコマンドに引数としてリスト名を渡して起動できるように修正
+* search-timelineでin_reply_to_status_idをツイートデータに含めるよう修正")
 	)
 	(	("version" . "1.0.0")
 		("file" . "ldrpin-mode1.0.0.tgz")
