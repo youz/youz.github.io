@@ -145,8 +145,8 @@ function UserFilter
 
     tokens = formula.split(/[\s,?:&|=!<>()*%+/~^-]+/)
     for w of tokens
-      if (isNaN(tokens[i]) && !tokens[i].match(checker))
-        throw "ILLEGAL TOKEN: '" + tokens[i] + "'"
+      if (isNaN(w) && !w.match(checker))
+        throw "ILLEGAL TOKEN: '#{w}'"
     
     funcstr = "(function (x,y,m,d,r,g,b,a,c,z) { "
     if formula.match(/cnv/)
@@ -195,14 +195,9 @@ function UserFilter
     ctx.putImageData(imagedata, 0, 0)
     true
 
-  if arguments.length == 4
-    @setFormula ...
-  else
-      @setFormula "r", "g", "b", "a"
-
 
   ## public members
-  setFormula: ->
+  @setFormula = ->
     for i from 0 to 3
       try
         filters[i] = make_func(arguments[i])
@@ -210,8 +205,8 @@ function UserFilter
         throw "Error in formula: " + "RGBA"[i] + "\n" + e
     true
   
-  controler: ctls
-  apply: (elm) ->
+  @controler = ctls
+  @apply = (elm) ->
     if elm.constructor == HTMLCanvasElement
       apply_filter(elm)
     else if elm.constructor == HTMLImageElement
@@ -226,19 +221,19 @@ function UserFilter
     else
       throw "filter can not apply to " + elm.toString()
   
-  check: (formula) ->
+  @check = (formula) ->
     try
       make_func(formula)
       "ok"
     catch e
       e
 
-  addFunction: (name, func) ->
+  @addFunction = (name, func) ->
     user_functions[name] = func
   
   ## animation
-  reset_timer: -> f = 0
-  start: (canvas, interval) ->
+  @reset_timer = -> f = 0
+  @start = (canvas, interval) ->
     clearInterval(timer)
     start_time = new Date
     f = 0
@@ -249,7 +244,14 @@ function UserFilter
         clearInterval timer
     timer = setInterval fn, interval || 33
   
-  stop: -> clearInterval(timer)
+  @stop = -> clearInterval(timer)
+
+  ## initialize
+  if arguments.length == 4
+    @setFormula ...
+  else
+    @setFormula "r", "g", "b", "a"
+
 
 
 @UserFilter ?= UserFilter
