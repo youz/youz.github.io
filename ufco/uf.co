@@ -251,3 +251,6 @@ class UserFilter
     timer = setInterval fn, interval || 33
   
   stop: -> clearInterval(timer)
+
+
+@UserFilter ?= UserFilter
