@@ -15,19 +15,19 @@
 OAuth認証ヘッダの生成機能と、Webブラウザ経由でのアクセストークン取得機能を提供します。")
 		("changes" . "2011/10/30: 1st release")
 	)
-	(	("version" . "1.1.2")
+	(	("version" . "1.1.3")
 		("file" . "xyttr.tgz")
 		("src" . "http://dl.dropbox.com/u/215714/xyzzy/xyttr.tgz")
-		("md5" . "cf0dcaa2e1b0e5aaad42bb32def9b73e")
-		("time" . 3533477964)
+		("md5" . "98eeeb3c3449d9809bdaf1f412576a3e")
+		("time" . 3534573075)
 		("name" . "xyttr")
-		("category" "Network" "Libraries")
+		("category" "Network")
 		("description" . "xyzzy上で動作するミニマムなtwitterクライアント")
 		("depends" "xml-http-request" "json")
-		("changes" . "2011/12/21:
-* タイムラインバッファリロード時に実行するフック *timeline-reload-hook* を追加
-* xyttr-listコマンドに引数としてリスト名を渡して起動できるように修正
-* search-timelineでin_reply_to_status_idをツイートデータに含めるよう修正")
+		("changes" . "2012/01/03:
+* xyttr-listコマンドのリスト選択肢に自作リストを追加
+* DMの削除に対応 (通常のツイートと同じくdキー)
+* ~/.xyttr/config.l のサンプルを追加 (postbuf.l)")
 	)
 	(	("version" . "1.0.0")
 		("file" . "ldrpin-mode1.0.0.tgz")
