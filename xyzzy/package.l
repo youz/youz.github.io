@@ -81,15 +81,29 @@ OAuth認証ヘッダの生成機能と、Webブラウザ経由でのアクセストークン取得機能を提供し
 		("changes" . "2011/12/20
 notify-with-socket-callbackのコールバック引数省略時の不具合を修正")
 	)
-	(	("version" . "0.9.0")
+	(	("version" . "1.0.0")
 		("file" . "xl-repl.tgz")
 		("src" . "http://dl.dropbox.com/u/215714/xyzzy/xl-repl.tgz")
-		("md5" . "7004a3fab0a57156c5bb550aa8e45f0e")
-		("time" . 3538132501)
+		("md5" . "6bfc5a1e6d10fde8bd2f5a38d90e08e8")
+		("time" . 3538481547)
 		("name" . "xl-repl")
 		("category" "Lisp" "Development")
 		("depends")
 		("description" . "lisp-repl-mode for xyzzy")
-		("changes" . "2012/02/13: 1st release")
+		("changes" . "2012/02/17: ver. 1.0.0
+### 新機能
+* expandコマンド -- マクロフォームを展開して表示
+* timeコマンド -- 処理時間を計測して表示
+
+### 変更点
+* ls系コマンドの表示で、カレントパッケージのシンボルにもパッケージ修飾子を付けるように変更
+* ls系コマンドの表示で、関数/マクロは引数も表示するように変更
+* 評価結果がprint-functionを持つ構造体の場合、format指示子~Aを使って印字するように変更
+
+### 修正
+* 評価結果が循環参照を含む場合に対応
+* REPL変数 `/` の内容をCL仕様準拠に変更
+* 評価結果表示の前にfresh-lineを行うように変更
+")
 	)
 )
