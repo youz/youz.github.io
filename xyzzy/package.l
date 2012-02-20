@@ -81,16 +81,21 @@ OAuth認証ヘッダの生成機能と、Webブラウザ経由でのアクセストークン取得機能を提供し
 		("changes" . "2011/12/20
 notify-with-socket-callbackのコールバック引数省略時の不具合を修正")
 	)
-	(	("version" . "1.0.0")
+	(	("version" . "1.0.1")
 		("file" . "xl-repl.tgz")
 		("src" . "http://dl.dropbox.com/u/215714/xyzzy/xl-repl.tgz")
-		("md5" . "6bfc5a1e6d10fde8bd2f5a38d90e08e8")
-		("time" . 3538481547)
+		("md5" . "c273f809deb875ebaeb258154c4875e4")
+		("time" . 3538705848)
 		("name" . "xl-repl")
 		("category" "Lisp" "Development")
 		("depends")
 		("description" . "lisp-repl-mode for xyzzy")
-		("changes" . "2012/02/17: ver. 1.0.0
+		("changes" . "2012/02/20: ver. 1.0.1
+======================
+* 評価結果がnilの時に印字されない不具合を修正
+
+2012/02/17: ver. 1.0.0
+======================
 ### 新機能
 * expandコマンド -- マクロフォームを展開して表示
 * timeコマンド -- 処理時間を計測して表示
