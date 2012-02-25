@@ -81,16 +81,29 @@ OAuth認証ヘッダの生成機能と、Webブラウザ経由でのアクセストークン取得機能を提供し
 		("changes" . "2011/12/20
 notify-with-socket-callbackのコールバック引数省略時の不具合を修正")
 	)
-	(	("version" . "1.0.1")
+	(	("version" . "1.1.0")
 		("file" . "xl-repl.tgz")
 		("src" . "http://dl.dropbox.com/u/215714/xyzzy/xl-repl.tgz")
-		("md5" . "c273f809deb875ebaeb258154c4875e4")
-		("time" . 3538705848)
+		("md5" . "816520186be63e97fb696f208073a755")
+		("time" . 3539127878)
 		("name" . "xl-repl")
 		("category" "Lisp" "Development")
 		("depends")
 		("description" . "lisp-repl-mode for xyzzy")
-		("changes" . "2012/02/20: ver. 1.0.1
+		("changes" . "2012/02/25: ver. 1.1.0
+======================
+### 新機能
+* 標準出力と評価結果の表示にtext-attributeを適用
+* *return-behavior*の値によってReturn押下時の挙動を切り替えられるように
+* キーバインド追加
+
+### 変更点
+* 式途中/過去入力/過去評価結果の各表示位置でReturnを押した時の挙動をSLIME風に
+* si:*trace-on-error* => t の時、*error-output*への出力を全て横取りしていたのを
+   broadcastを使い、コピーを取得するように変更
+* 入力履歴のキーバインドはM-n,M-pとし、C-n,C-pは*lisp-mode-map*のままにした
+
+2012/02/20: ver. 1.0.1
 ======================
 * 評価結果がnilの時に印字されない不具合を修正
 
