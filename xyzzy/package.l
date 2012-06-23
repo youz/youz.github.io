@@ -81,16 +81,34 @@ OAuth認証ヘッダの生成機能と、Webブラウザ経由でのアクセストークン取得機能を提供し
 		("changes" . "2011/12/20
 notify-with-socket-callbackのコールバック引数省略時の不具合を修正")
 	)
-	(	("version" . "1.1.0")
+	(	("version" . "1.2.0")
 		("file" . "xl-repl.tgz")
 		("src" . "http://dl.dropbox.com/u/215714/xyzzy/xl-repl.tgz")
-		("md5" . "816520186be63e97fb696f208073a755")
-		("time" . 3539127878)
+		("md5" . "9914159f8f63e2fcd0dc1e4b48b90ff5")
+		("time" . 3549410264)
 		("name" . "xl-repl")
 		("category" "Lisp" "Development")
 		("depends")
 		("description" . "lisp-repl-mode for xyzzy")
-		("changes" . "2012/02/25: ver. 1.1.0
+		("changes" . "
+2012/06/23: ver. 1.2.0
+======================
+### 修正点
+
+* Ctrl+Gで評価を中断した時に次のプロンプトが表示されない問題を修正
+* ls系コマンドでシンボルが重複して表示される場合がある問題を修正
+
+### 新機能 (REPLコマンド)
+* reference -- リファレンス検索
+* lscmd     -- コマンド名検索
+* step      -- ステップ実行
+* log       -- ログ取り用ユーティリティ
+* calc      -- 電卓
+* clip      -- 標準出力をクリップボードにコピー
+
+詳細はREADME参照
+
+2012/02/25: ver. 1.1.0
 ======================
 ### 新機能
 * 標準出力と評価結果の表示にtext-attributeを適用
