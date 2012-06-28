@@ -84,16 +84,26 @@ OAuth認証ヘッダの生成機能と、Webブラウザ経由でのアクセストークン取得機能を提供し
 		("changes" . "2011/12/20
 notify-with-socket-callbackのコールバック引数省略時の不具合を修正")
 	)
-	(	("version" . "1.2.0")
+	(	("version" . "1.2.1")
 		("file" . "xl-repl.tgz")
 		("src" . "http://dl.dropbox.com/u/215714/xyzzy/xl-repl.tgz")
-		("md5" . "9914159f8f63e2fcd0dc1e4b48b90ff5")
-		("time" . 3549410264)
+		("md5" . "9a06590b1c6c60d5cc28797f4225aa91")
+		("time" . 3549876281)
 		("name" . "xl-repl")
 		("category" "Lisp" "Development")
 		("depends")
 		("description" . "lisp-repl-mode for xyzzy")
-		("changes" . "
+		("changes" . "2012/06/28: ver. 1.2.1
+======================
+### 修正点
+
+* referenceコマンド 表示機能強化
+  - 説明文中のシンボルやseealso項目上でReturn もしくは
+    左クリックすると該当記事にジャンプするように
+  - Backspace, Alt+Leftで戻る / Alt+Rightで進む
+  - j,k で1行スクロール
+  - J,Kで記事移動 (:part or :ftsオプションを使用して複数記事表示時)
+
 2012/06/23: ver. 1.2.0
 ======================
 ### 修正点
