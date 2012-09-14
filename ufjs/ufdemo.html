@@ -6,6 +6,7 @@
 body,#bg {
   padding: 0;
   margin: 0;
+  font-family: Serif;
 }
 #content {
   margin: 10px 10px;
@@ -15,12 +16,16 @@ body,#bg {
   background-color: rgba(255,255,255,0.7);
 }
 #header { width: 100% }
-#image, #controler {
+#image, #controller {
   float: left;
   padding: 5px 5px;
 }
 #formula { clear: both; } 
 #canvas { border: solid 2px #888; }
+div.caption {
+  width: 100%;
+  background-color: rgba(224,224,240,0.8);
+}
 textarea {
   vertical-align: middle;
   font-family: "Courier";
@@ -43,7 +48,7 @@ input.ctl { width: 270px }
 <h2>UserFilter for canvas DEMO</h2>
 </div>
 <div id="image">
-file:
+<div class="caption">file</div>
 <select id="file">
 <option value="kodim01s.jpg">kodim01</option>
 <option value="kodim08s.jpg">kodim08</option>
@@ -56,8 +61,8 @@ file:
 <br>
 <canvas id="canvas" width="256" height="256"></canvas><br>
 </div>
-<div id="controler">
-controler:
+<div id="controller">
+<div class="caption">controller</div>
 <ol start="0">
   <li><input type="range" id="c0" class="ctl" min="0" max="255" value="0"><input id="m0" type="text" size="3" value="0"></li> 
   <li><input type="range" id="c1" class="ctl" min="0" max="255" value="0"><input id="m1" type="text" size="3" value="0"></li> 
@@ -70,7 +75,7 @@ controler:
 </ol>
 </div>
 <div id="formula">
-formula:<br>
+<div class="caption">formula</div>
 R<textarea id="f0" cols="80" rows="2">r</textarea><span id="e0" class="caution"></span><br>
 G<textarea id="f1" cols="80" rows="2">g</textarea><span id="e1" class="caution"></span><br>
 B<textarea id="f2" cols="80" rows="2">b</textarea><span id="e2" class="caution"></span><br>
@@ -97,7 +102,7 @@ var UFJS_DEMO = function () {
   function render (reset) {
     UF.setFormula($('f0').value, $('f1').value, $('f2').value, $('f3').value);
     for (var i=0; i<8; ++i) {
-      UF.controler[i] = $('c'+i).value * 1;
+      UF.controller[i] = $('c'+i).value * 1;
     }
     if (reset) load_image($('file').value);
     return UF.apply(canvas);
