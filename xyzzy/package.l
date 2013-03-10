@@ -89,16 +89,20 @@ OAuth認証ヘッダの生成機能と、Webブラウザ経由でのアクセストークン取得機能を提供し
 		("changes" . "2011/12/20
 notify-with-socket-callbackのコールバック引数省略時の不具合を修正")
 	)
-	(	("version" . "1.2.1")
+	(	("version" . "1.2.1b")
 		("file" . "xl-repl.tgz")
 		("src" . "http://dl.dropbox.com/u/215714/xyzzy/xl-repl.tgz")
-		("md5" . "dbd577879c7b031228135d82ba1aafba")
-		("time" . 3549878326)
+		("md5" . "4e33cbcae734ba794660660aa1d8b2b9")
+		("time" . 3571919472)
 		("name" . "xl-repl")
 		("category" "Lisp" "Development")
 		("depends")
 		("description" . "lisp-repl-mode for xyzzy")
-		("changes" . "2012/06/28: ver. 1.2.1
+		("changes" . "2013/03/10: ver. 1.2.1b
+正しくマクロが展開されずにバイトコンパイルされたファイルが
+混じっていたので再パッケージング
+
+2012/06/28: ver. 1.2.1
 ======================
 ### 修正点
 
