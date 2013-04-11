@@ -1,6 +1,6 @@
 ("name" . "*scrap*")
 ("author" . "Yousuke Ushiki")
-("url" . "http://github.com/youz/")
+("url" . "http://youz.github.io/xyzzy/")
 ("description" . "Žï–¡“Ixyzzy lisp")
 (	"packages"
 	(	("version" . "1.0.0")
