@@ -15,20 +15,25 @@
 OAuth認証ヘッダの生成機能と、Webブラウザ経由でのアクセストークン取得機能を提供します。")
 		("changes" . "2011/10/30: 1st release")
 	)
-	(	("version" . "1.1.3b")
+	(	("version" . "1.2.0")
 		("file" . "xyttr.tgz")
 		("src" . "http://dl.dropbox.com/u/215714/xyzzy/xyttr.tgz")
-		("md5" . "37e591b2abcf21d2db3a4d3360fa8a8c")
-		("time" . 3534577939)
+		("md5" . "43521ce55585eafda6d0bfceae2bcbee")
+		("time" . 3571918411)
 		("name" . "xyttr")
 		("category" "Network")
 		("description" . "xyzzy上で動作するミニマムなtwitterクライアント")
 		("depends" "xml-http-request" "json")
-		("changes" . "2012/01/03:
-* xyttr-listコマンドのリスト選択肢に自作リストを追加
-* DMの削除に対応 (通常のツイートと同じくdキー)
-* ~/.xyttr/config.l のサンプルを追加 (postbuf.l)")
-	)
+		("changes" . "2013/03/10: ver. 1.2.0
+======================
+### 修正点
+
+* Twitter API ver.1.1に対応
+  - public_timeline, retweeted_by_me, retweeted_to_me の各APIが削除されたため
+    それぞれ対応するコマンドを削除
+  - DMバッファでsend-messageコマンドを実行すると送り先が正しく設定されない問題を修正
+  - 投稿バッファプラグイン (~/.xyttr/postbuf.l) を API ver.1.1 に対応
+"))
 	(	("version" . "1.0.0")
 		("file" . "ldrpin-mode1.0.0.tgz")
 		("src" . "http://dl.dropbox.com/u/215714/xyzzy/ldrpin-mode1.0.0.tgz")
@@ -84,16 +89,20 @@ OAuth認証ヘッダの生成機能と、Webブラウザ経由でのアクセストークン取得機能を提供し
 		("changes" . "2011/12/20
 notify-with-socket-callbackのコールバック引数省略時の不具合を修正")
 	)
-	(	("version" . "1.2.1")
+	(	("version" . "1.2.1b")
 		("file" . "xl-repl.tgz")
 		("src" . "http://dl.dropbox.com/u/215714/xyzzy/xl-repl.tgz")
-		("md5" . "dbd577879c7b031228135d82ba1aafba")
-		("time" . 3549878326)
+		("md5" . "4e33cbcae734ba794660660aa1d8b2b9")
+		("time" . 3571919472)
 		("name" . "xl-repl")
 		("category" "Lisp" "Development")
 		("depends")
 		("description" . "lisp-repl-mode for xyzzy")
-		("changes" . "2012/06/28: ver. 1.2.1
+		("changes" . "2013/03/10: ver. 1.2.1b
+正しくマクロが展開されずにバイトコンパイルされたファイルが
+混じっていたので再パッケージング
+
+2012/06/28: ver. 1.2.1
 ======================
 ### 修正点
 
